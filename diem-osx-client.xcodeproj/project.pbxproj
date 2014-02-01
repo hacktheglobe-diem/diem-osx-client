@@ -20,6 +20,8 @@
 		907AD074189D1A6700CD98D1 /* diem_osx_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD073189D1A6700CD98D1 /* diem_osx_clientTests.m */; };
 		90A6C718189D1AE100CF5229 /* Watcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C715189D1AE100CF5229 /* Watcher.m */; };
 		90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C717189D1AE100CF5229 /* WatcherEvent.m */; };
+		90C49DB3189D1DE100928D9C /* DiemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C49DB2189D1DE100928D9C /* DiemController.m */; };
+		90C49DB5189D221300928D9C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C49DB4189D221300928D9C /* CoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		90A6C715189D1AE100CF5229 /* Watcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Watcher.m; sourceTree = "<group>"; };
 		90A6C716189D1AE100CF5229 /* WatcherEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatcherEvent.h; sourceTree = "<group>"; };
 		90A6C717189D1AE100CF5229 /* WatcherEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatcherEvent.m; sourceTree = "<group>"; };
+		90C49DB1189D1DE100928D9C /* DiemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiemController.h; sourceTree = "<group>"; };
+		90C49DB2189D1DE100928D9C /* DiemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiemController.m; sourceTree = "<group>"; };
+		90C49DB4189D221300928D9C /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C49DB5189D221300928D9C /* CoreServices.framework in Frameworks */,
 				907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +107,7 @@
 		907AD048189D1A6700CD98D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90C49DB4189D221300928D9C /* CoreServices.framework */,
 				907AD049189D1A6700CD98D1 /* Cocoa.framework */,
 				907AD068189D1A6700CD98D1 /* XCTest.framework */,
 				907AD04B189D1A6700CD98D1 /* Other Frameworks */,
@@ -174,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				90A6C71B189D1CAE00CF5229 /* App Delegate */,
+				90C49DB0189D1DC200928D9C /* Diem Controller */,
 				90A6C713189D1AB500CF5229 /* Watcher */,
 			);
 			path = Classes;
@@ -186,6 +194,15 @@
 				907AD05C189D1A6700CD98D1 /* AppDelegate.m */,
 			);
 			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		90C49DB0189D1DC200928D9C /* Diem Controller */ = {
+			isa = PBXGroup;
+			children = (
+				90C49DB1189D1DE100928D9C /* DiemController.h */,
+				90C49DB2189D1DE100928D9C /* DiemController.m */,
+			);
+			path = "Diem Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +307,7 @@
 				90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */,
 				907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */,
 				907AD056189D1A6700CD98D1 /* main.m in Sources */,
+				90C49DB3189D1DE100928D9C /* DiemController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,4 @@
 
 @property (strong, nonatomic) IBOutlet NSMenu *menu;
 
-@property (strong, nonatomic) NSURL *diemDirectoryURL;
-
 @end

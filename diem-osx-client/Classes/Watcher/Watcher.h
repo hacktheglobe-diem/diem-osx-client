@@ -23,6 +23,7 @@
 + (Watcher *)watcherForURL:(NSURL *)url
               withDelegate:(id<WatcherDelegate>)delegate;
 
-@property (weak, readonly) id<WatcherDelegate> delegate;
+@property (weak, readonly, nonatomic) id<WatcherDelegate> delegate;
+@property (strong, readonly, nonatomic) NSURL *url;
 
 @end

@@ -10,4 +10,11 @@
 
 @interface WatcherEvent : NSObject
 
+@property (strong, nonatomic) NSString *path;
+@property (strong, nonatomic) NSDate *date;
+@property (nonatomic) unsigned long long eventID;
+@property (nonatomic) unsigned int flags;
+
+- (NSDictionary *)serialize;
+
 @end

@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "DiemController.h"
 
-NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
-
-@interface AppDelegate ()
+@interface AppDelegate () 
 
 @property (strong, nonatomic) NSStatusItem *statusItem;
+@property (strong, nonatomic) DiemController *controller;
 
 @end
 
@@ -20,36 +20,26 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [self checkAndSetupDiemDirectory];
+    self.controller = [DiemController new];
+    [self.controller checkAndSetupDiemDirectoryCompletion:^(BOOL success)
+    {
+        if (success) {
+            [self.controller startTracking];
+        }
+        else {
+            [[NSApplication sharedApplication] terminate:self];
+        }
+    }];
     
     [self setUpStatusItem];
 }
 
-- (void)checkAndSetupDiemDirectory
+- (void)applicationWillTerminate:(NSNotification *)notification
 {
-    if (![[NSUserDefaults standardUserDefaults] URLForKey:DiemDirectoryURLKey])
-    {
-        NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-        openPanel.canChooseFiles = NO;
-        openPanel.canChooseDirectories = YES;
-        openPanel.allowsMultipleSelection = NO;
-        openPanel.directoryURL = [NSURL URLWithString:@"~/"];
-        openPanel.canCreateDirectories = YES;
-        
-        [openPanel beginWithCompletionHandler:^(NSInteger result)
-         {
-             if (result == NSFileHandlingPanelOKButton)
-             {
-                 [[NSUserDefaults standardUserDefaults] setURL:openPanel.URL forKey:DiemDirectoryURLKey];
-             }
-             else {
-                 [[NSApplication sharedApplication] terminate:self];
-             }
-         }];
-    }
-    
-    self.diemDirectoryURL = [[NSUserDefaults standardUserDefaults] URLForKey:DiemDirectoryURLKey];
+    [self.controller stopTracking];
 }
+
+#pragma mark - Custom methods
 
 - (void)setUpStatusItem
 {

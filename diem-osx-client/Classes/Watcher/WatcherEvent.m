@@ -10,4 +10,12 @@
 
 @implementation WatcherEvent
 
+- (NSDictionary *)serialize
+{
+    return @{
+             @"path": self.path,
+             @"date": self.date
+             };
+}
+
 @end
