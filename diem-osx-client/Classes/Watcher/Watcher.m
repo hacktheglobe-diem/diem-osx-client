@@ -8,6 +8,7 @@
 
 #import "Watcher.h"
 #import <CoreServices/CoreServices.h>
+#import "NSString+MD5.h"
 
 @interface Watcher ()
 
@@ -88,8 +89,11 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
 
 - (void)callBackWithEvent:(WatcherEvent *)event
 {
-    NSRange substringRange = [event.path rangeOfString:[_url path]];
-    event.path = [event.path substringFromIndex:substringRange.length];
+    // MD5 hashing diem directory path
+    NSRange diemDirectoryPathRange = [event.path rangeOfString:[_url path]];
+    NSString *relativePath = [event.path substringFromIndex:diemDirectoryPathRange.length];
+    event.path = [NSString stringWithFormat:@"/%@%@", [[_url path] MD5String], relativePath];
+    
     if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvent:)])
     {
         [self.delegate watcher:self
