@@ -14,7 +14,8 @@
 {
     static NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] initWithDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'" allowNaturalLanguage:NO];
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     }
     
     return [dateFormatter stringFromDate:date];
@@ -25,7 +26,7 @@
     
     return @{
              @"path": self.path,
-             @"date": [self.class stringFromDate:self.date],
+             @"time": [self.class stringFromDate:self.date],
              @"kind": (self.kind == WatcherEventKindChange ? @"change" : @"unknown")
              };
 }
