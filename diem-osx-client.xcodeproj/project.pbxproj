@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907AD049189D1A6700CD98D1 /* Cocoa.framework */; };
+		907AD054189D1A6700CD98D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 907AD052189D1A6700CD98D1 /* InfoPlist.strings */; };
+		907AD056189D1A6700CD98D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD055189D1A6700CD98D1 /* main.m */; };
+		907AD05A189D1A6700CD98D1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 907AD058189D1A6700CD98D1 /* Credits.rtf */; };
+		907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD05C189D1A6700CD98D1 /* AppDelegate.m */; };
+		907AD060189D1A6700CD98D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 907AD05E189D1A6700CD98D1 /* MainMenu.xib */; };
+		907AD062189D1A6700CD98D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 907AD061189D1A6700CD98D1 /* Images.xcassets */; };
+		907AD069189D1A6700CD98D1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907AD068189D1A6700CD98D1 /* XCTest.framework */; };
+		907AD06A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907AD049189D1A6700CD98D1 /* Cocoa.framework */; };
+		907AD072189D1A6700CD98D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 907AD070189D1A6700CD98D1 /* InfoPlist.strings */; };
+		907AD074189D1A6700CD98D1 /* diem_osx_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD073189D1A6700CD98D1 /* diem_osx_clientTests.m */; };
+		90A6C718189D1AE100CF5229 /* Watcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C715189D1AE100CF5229 /* Watcher.m */; };
+		90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C717189D1AE100CF5229 /* WatcherEvent.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		907AD06B189D1A6700CD98D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 907AD03E189D1A6700CD98D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 907AD045189D1A6700CD98D1;
+			remoteInfo = "diem-osx-client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		907AD046189D1A6700CD98D1 /* diem-osx-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diem-osx-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		907AD049189D1A6700CD98D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		907AD04C189D1A6700CD98D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		907AD04D189D1A6700CD98D1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		907AD04E189D1A6700CD98D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		907AD051189D1A6700CD98D1 /* diem-osx-client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "diem-osx-client-Info.plist"; sourceTree = "<group>"; };
+		907AD053189D1A6700CD98D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		907AD055189D1A6700CD98D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		907AD057189D1A6700CD98D1 /* diem-osx-client-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "diem-osx-client-Prefix.pch"; sourceTree = "<group>"; };
+		907AD059189D1A6700CD98D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		907AD05B189D1A6700CD98D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		907AD05C189D1A6700CD98D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		907AD05F189D1A6700CD98D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		907AD061189D1A6700CD98D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		907AD067189D1A6700CD98D1 /* diem-osx-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "diem-osx-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		907AD068189D1A6700CD98D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		907AD06F189D1A6700CD98D1 /* diem-osx-clientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "diem-osx-clientTests-Info.plist"; sourceTree = "<group>"; };
+		907AD071189D1A6700CD98D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		907AD073189D1A6700CD98D1 /* diem_osx_clientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = diem_osx_clientTests.m; sourceTree = "<group>"; };
+		90A6C714189D1AE100CF5229 /* Watcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Watcher.h; sourceTree = "<group>"; };
+		90A6C715189D1AE100CF5229 /* Watcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Watcher.m; sourceTree = "<group>"; };
+		90A6C716189D1AE100CF5229 /* WatcherEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatcherEvent.h; sourceTree = "<group>"; };
+		90A6C717189D1AE100CF5229 /* WatcherEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatcherEvent.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		907AD043189D1A6700CD98D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		907AD064189D1A6700CD98D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				907AD06A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */,
+				907AD069189D1A6700CD98D1 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		907AD03D189D1A6700CD98D1 = {
+			isa = PBXGroup;
+			children = (
+				907AD04F189D1A6700CD98D1 /* diem-osx-client */,
+				907AD06D189D1A6700CD98D1 /* diem-osx-clientTests */,
+				907AD048189D1A6700CD98D1 /* Frameworks */,
+				907AD047189D1A6700CD98D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		907AD047189D1A6700CD98D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				907AD046189D1A6700CD98D1 /* diem-osx-client.app */,
+				907AD067189D1A6700CD98D1 /* diem-osx-clientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		907AD048189D1A6700CD98D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				907AD049189D1A6700CD98D1 /* Cocoa.framework */,
+				907AD068189D1A6700CD98D1 /* XCTest.framework */,
+				907AD04B189D1A6700CD98D1 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		907AD04B189D1A6700CD98D1 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				907AD04C189D1A6700CD98D1 /* AppKit.framework */,
+				907AD04D189D1A6700CD98D1 /* CoreData.framework */,
+				907AD04E189D1A6700CD98D1 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		907AD04F189D1A6700CD98D1 /* diem-osx-client */ = {
+			isa = PBXGroup;
+			children = (
+				90A6C713189D1AB500CF5229 /* Watcher */,
+				907AD05B189D1A6700CD98D1 /* AppDelegate.h */,
+				907AD05C189D1A6700CD98D1 /* AppDelegate.m */,
+				907AD05E189D1A6700CD98D1 /* MainMenu.xib */,
+				907AD061189D1A6700CD98D1 /* Images.xcassets */,
+				907AD050189D1A6700CD98D1 /* Supporting Files */,
+			);
+			path = "diem-osx-client";
+			sourceTree = "<group>";
+		};
+		907AD050189D1A6700CD98D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				907AD051189D1A6700CD98D1 /* diem-osx-client-Info.plist */,
+				907AD052189D1A6700CD98D1 /* InfoPlist.strings */,
+				907AD055189D1A6700CD98D1 /* main.m */,
+				907AD057189D1A6700CD98D1 /* diem-osx-client-Prefix.pch */,
+				907AD058189D1A6700CD98D1 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		907AD06D189D1A6700CD98D1 /* diem-osx-clientTests */ = {
+			isa = PBXGroup;
+			children = (
+				907AD073189D1A6700CD98D1 /* diem_osx_clientTests.m */,
+				907AD06E189D1A6700CD98D1 /* Supporting Files */,
+			);
+			path = "diem-osx-clientTests";
+			sourceTree = "<group>";
+		};
+		907AD06E189D1A6700CD98D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				907AD06F189D1A6700CD98D1 /* diem-osx-clientTests-Info.plist */,
+				907AD070189D1A6700CD98D1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		90A6C713189D1AB500CF5229 /* Watcher */ = {
+			isa = PBXGroup;
+			children = (
+				90A6C714189D1AE100CF5229 /* Watcher.h */,
+				90A6C715189D1AE100CF5229 /* Watcher.m */,
+				90A6C716189D1AE100CF5229 /* WatcherEvent.h */,
+				90A6C717189D1AE100CF5229 /* WatcherEvent.m */,
+			);
+			path = Watcher;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		907AD045189D1A6700CD98D1 /* diem-osx-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 907AD077189D1A6700CD98D1 /* Build configuration list for PBXNativeTarget "diem-osx-client" */;
+			buildPhases = (
+				907AD042189D1A6700CD98D1 /* Sources */,
+				907AD043189D1A6700CD98D1 /* Frameworks */,
+				907AD044189D1A6700CD98D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "diem-osx-client";
+			productName = "diem-osx-client";
+			productReference = 907AD046189D1A6700CD98D1 /* diem-osx-client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		907AD066189D1A6700CD98D1 /* diem-osx-clientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 907AD07A189D1A6700CD98D1 /* Build configuration list for PBXNativeTarget "diem-osx-clientTests" */;
+			buildPhases = (
+				907AD063189D1A6700CD98D1 /* Sources */,
+				907AD064189D1A6700CD98D1 /* Frameworks */,
+				907AD065189D1A6700CD98D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				907AD06C189D1A6700CD98D1 /* PBXTargetDependency */,
+			);
+			name = "diem-osx-clientTests";
+			productName = "diem-osx-clientTests";
+			productReference = 907AD067189D1A6700CD98D1 /* diem-osx-clientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		907AD03E189D1A6700CD98D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Esben Sorig";
+				TargetAttributes = {
+					907AD066189D1A6700CD98D1 = {
+						TestTargetID = 907AD045189D1A6700CD98D1;
+					};
+				};
+			};
+			buildConfigurationList = 907AD041189D1A6700CD98D1 /* Build configuration list for PBXProject "diem-osx-client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 907AD03D189D1A6700CD98D1;
+			productRefGroup = 907AD047189D1A6700CD98D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				907AD045189D1A6700CD98D1 /* diem-osx-client */,
+				907AD066189D1A6700CD98D1 /* diem-osx-clientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		907AD044189D1A6700CD98D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				907AD054189D1A6700CD98D1 /* InfoPlist.strings in Resources */,
+				907AD062189D1A6700CD98D1 /* Images.xcassets in Resources */,
+				907AD05A189D1A6700CD98D1 /* Credits.rtf in Resources */,
+				907AD060189D1A6700CD98D1 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		907AD065189D1A6700CD98D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				907AD072189D1A6700CD98D1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		907AD042189D1A6700CD98D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90A6C718189D1AE100CF5229 /* Watcher.m in Sources */,
+				90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */,
+				907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */,
+				907AD056189D1A6700CD98D1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		907AD063189D1A6700CD98D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				907AD074189D1A6700CD98D1 /* diem_osx_clientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		907AD06C189D1A6700CD98D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 907AD045189D1A6700CD98D1 /* diem-osx-client */;
+			targetProxy = 907AD06B189D1A6700CD98D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		907AD052189D1A6700CD98D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				907AD053189D1A6700CD98D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		907AD058189D1A6700CD98D1 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				907AD059189D1A6700CD98D1 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		907AD05E189D1A6700CD98D1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				907AD05F189D1A6700CD98D1 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		907AD070189D1A6700CD98D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				907AD071189D1A6700CD98D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		907AD075189D1A6700CD98D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		907AD076189D1A6700CD98D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		907AD078189D1A6700CD98D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "diem-osx-client/diem-osx-client-Prefix.pch";
+				INFOPLIST_FILE = "diem-osx-client/diem-osx-client-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		907AD079189D1A6700CD98D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "diem-osx-client/diem-osx-client-Prefix.pch";
+				INFOPLIST_FILE = "diem-osx-client/diem-osx-client-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		907AD07B189D1A6700CD98D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/diem-osx-client.app/Contents/MacOS/diem-osx-client";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "diem-osx-client/diem-osx-client-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "diem-osx-clientTests/diem-osx-clientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		907AD07C189D1A6700CD98D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/diem-osx-client.app/Contents/MacOS/diem-osx-client";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "diem-osx-client/diem-osx-client-Prefix.pch";
+				INFOPLIST_FILE = "diem-osx-clientTests/diem-osx-clientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		907AD041189D1A6700CD98D1 /* Build configuration list for PBXProject "diem-osx-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				907AD075189D1A6700CD98D1 /* Debug */,
+				907AD076189D1A6700CD98D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		907AD077189D1A6700CD98D1 /* Build configuration list for PBXNativeTarget "diem-osx-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				907AD078189D1A6700CD98D1 /* Debug */,
+				907AD079189D1A6700CD98D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		907AD07A189D1A6700CD98D1 /* Build configuration list for PBXNativeTarget "diem-osx-clientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				907AD07B189D1A6700CD98D1 /* Debug */,
+				907AD07C189D1A6700CD98D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 907AD03E189D1A6700CD98D1 /* Project object */;
+}
