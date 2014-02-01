@@ -19,11 +19,11 @@
         <customObject id="420" customClass="NSFontManager"/>
         <menu id="kj6-Yw-VlK">
             <items>
-                <menuItem title="Item 1" id="Rd1-OS-cfT">
+                <menuItem title="Reset Diem Folder" id="Zw9-Ze-TUW">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" id="Zw9-Ze-TUW">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="resetDiemDirectory:" target="494" id="T5G-l9-g8k"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Quit" id="ix7-bI-ZmR">
                     <modifierMask key="keyEquivalentModifierMask"/>

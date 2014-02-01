@@ -13,6 +13,7 @@
 @property (strong, readonly, nonatomic) NSURL *diemDirectoryURL;
 
 - (void)checkAndSetupDiemDirectoryCompletion:(void(^)(BOOL success))completion;
+- (void)resetDiemDirectory;
 - (void)startTracking;
 - (void)stopTracking;
 

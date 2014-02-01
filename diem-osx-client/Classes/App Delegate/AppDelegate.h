@@ -12,4 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet NSMenu *menu;
 
+- (IBAction)quit:(id)sender;
+- (IBAction)resetDiemDirectory:(id)sender;
+
 @end

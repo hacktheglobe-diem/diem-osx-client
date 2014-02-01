@@ -88,6 +88,8 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
 
 - (void)callBackWithEvent:(WatcherEvent *)event
 {
+    NSRange substringRange = [event.path rangeOfString:[_url path]];
+    event.path = [event.path substringFromIndex:substringRange.length];
     if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvent:)])
     {
         [self.delegate watcher:self

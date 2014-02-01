@@ -21,6 +21,9 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
 @end
 
 @implementation DiemController
+{
+    BOOL _isTracking;
+}
 
 - (void)checkAndSetupDiemDirectoryCompletion:(void (^)(BOOL failed))completion
 {
@@ -32,6 +35,7 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
         openPanel.allowsMultipleSelection = NO;
         openPanel.directoryURL = [NSURL URLWithString:@"~/"];
         openPanel.canCreateDirectories = YES;
+        [openPanel setLevel:NSFloatingWindowLevel];
         
         [openPanel beginWithCompletionHandler:^(NSInteger result)
          {
@@ -47,8 +51,18 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
              }
          }];
     }
-    // TODO: check if stored URL is still a valid directory
-    completion(YES);
+    else {
+        // TODO: check if stored URL is still a valid directory
+        completion(YES);
+    }
+}
+
+- (void)resetDiemDirectory
+{
+    if (_isTracking) {
+        [self stopTracking];
+    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DiemDirectoryURLKey];
 }
 
 - (NSURL *)diemDirectoryURL
@@ -60,11 +74,13 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
 {
     self.watcher = [Watcher watcherForURL:[self diemDirectoryURL]
                              withDelegate:self];
+    _isTracking = YES;
 }
 
 - (void)stopTracking
 {
     self.watcher = nil;
+    _isTracking = NO;
 }
 
 - (APIClient *)apiClient

@@ -21,15 +21,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     self.controller = [DiemController new];
-    [self.controller checkAndSetupDiemDirectoryCompletion:^(BOOL success)
-    {
-        if (success) {
-            [self.controller startTracking];
-        }
-        else {
-            [[NSApplication sharedApplication] terminate:self];
-        }
-    }];
+    [self chooseDiemDirectory];
     
     [self setUpStatusItem];
 }
@@ -51,9 +43,29 @@
     self.statusItem.highlightMode = YES;
 }
 
+- (void)chooseDiemDirectory
+{
+    [self.controller checkAndSetupDiemDirectoryCompletion:^(BOOL success)
+     {
+         if (success) {
+             [self.controller startTracking];
+         }
+         else {
+             [[NSApplication sharedApplication] terminate:self];
+         }
+     }];
+}
+
 - (IBAction)quit:(id)sender
 {
     [[NSApplication sharedApplication] terminate:self];
+}
+
+- (IBAction)resetDiemDirectory:(id)sender
+{
+    [self.controller resetDiemDirectory];
+    [self chooseDiemDirectory];
+    
 }
 
 @end
