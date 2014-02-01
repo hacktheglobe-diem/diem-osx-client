@@ -121,9 +121,7 @@
 		907AD04F189D1A6700CD98D1 /* diem-osx-client */ = {
 			isa = PBXGroup;
 			children = (
-				90A6C713189D1AB500CF5229 /* Watcher */,
-				907AD05B189D1A6700CD98D1 /* AppDelegate.h */,
-				907AD05C189D1A6700CD98D1 /* AppDelegate.m */,
+				90A6C71A189D1C6E00CF5229 /* Classes */,
 				907AD05E189D1A6700CD98D1 /* MainMenu.xib */,
 				907AD061189D1A6700CD98D1 /* Images.xcassets */,
 				907AD050189D1A6700CD98D1 /* Supporting Files */,
@@ -170,6 +168,24 @@
 				90A6C717189D1AE100CF5229 /* WatcherEvent.m */,
 			);
 			path = Watcher;
+			sourceTree = "<group>";
+		};
+		90A6C71A189D1C6E00CF5229 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				90A6C71B189D1CAE00CF5229 /* App Delegate */,
+				90A6C713189D1AB500CF5229 /* Watcher */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		90A6C71B189D1CAE00CF5229 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				907AD05B189D1A6700CD98D1 /* AppDelegate.h */,
+				907AD05C189D1A6700CD98D1 /* AppDelegate.m */,
+			);
+			path = "App Delegate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
