@@ -25,8 +25,11 @@
                 <menuItem title="Item 2" id="Zw9-Ze-TUW">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item 3" id="ix7-bI-ZmR">
+                <menuItem title="Quit" id="ix7-bI-ZmR">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quit:" target="494" id="kca-7w-rpc"/>
+                    </connections>
                 </menuItem>
             </items>
         </menu>

@@ -8,12 +8,15 @@
 
 #import "DiemController.h"
 #import "Watcher.h"
+#import "APIClient.h"
 
 NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
 
 @interface DiemController () <WatcherDelegate>
 
 @property (strong, nonatomic) Watcher *watcher;
+
+@property (strong, nonatomic) APIClient *apiClient;
 
 @end
 
@@ -44,6 +47,7 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
              }
          }];
     }
+    // TODO: check if stored URL is still a valid directory
     completion(YES);
 }
 
@@ -63,11 +67,26 @@ NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
     self.watcher = nil;
 }
 
+- (APIClient *)apiClient
+{
+    if (!_apiClient) {
+        _apiClient = [[APIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:1200/api/"]];
+    }
+    return _apiClient;
+}
+
 #pragma mark - WatcherDelegate
 
 - (void)watcher:(Watcher *)watcher didRegisterEvent:(WatcherEvent *)event
 {
-    
+    NSLog(@"%@, %llu, %du", event.path, event.eventID, event.flags);
+    [self.apiClient postOccurrence:[event serialize] success:^
+    {
+        NSLog(@"Occurrence posted!");
+    } failure:^(NSHTTPURLResponse *response, NSError *error)
+    {
+        NSLog(@"Occurrence post failed.\n%@\n%@", response, error);
+    }];
 }
 
 @end

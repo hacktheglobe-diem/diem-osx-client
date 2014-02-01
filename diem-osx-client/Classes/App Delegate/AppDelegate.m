@@ -51,4 +51,9 @@
     self.statusItem.highlightMode = YES;
 }
 
+- (IBAction)quit:(id)sender
+{
+    [[NSApplication sharedApplication] terminate:self];
+}
+
 @end

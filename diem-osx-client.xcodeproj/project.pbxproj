@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C7AB6532EB34167A8EF45FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E54CE688D49649DD64066 /* libPods.a */; };
+		906BA4D9189D497D00D0E10E /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4D8189D497D00D0E10E /* APIClient.m */; };
 		907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907AD049189D1A6700CD98D1 /* Cocoa.framework */; };
 		907AD054189D1A6700CD98D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 907AD052189D1A6700CD98D1 /* InfoPlist.strings */; };
 		907AD056189D1A6700CD98D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD055189D1A6700CD98D1 /* main.m */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B7CC5AADEA94147B088CBD2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		492E54CE688D49649DD64066 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		906BA4D7189D497D00D0E10E /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		906BA4D8189D497D00D0E10E /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		907AD046189D1A6700CD98D1 /* diem-osx-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diem-osx-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		907AD049189D1A6700CD98D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		907AD04C189D1A6700CD98D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +76,7 @@
 			files = (
 				90C49DB5189D221300928D9C /* CoreServices.framework in Frameworks */,
 				907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */,
+				6C7AB6532EB34167A8EF45FD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		906BA4D6189D495D00D0E10E /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				906BA4D7189D497D00D0E10E /* APIClient.h */,
+				906BA4D8189D497D00D0E10E /* APIClient.m */,
+			);
+			path = "API Client";
+			sourceTree = "<group>";
+		};
 		907AD03D189D1A6700CD98D1 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,7 @@
 				907AD06D189D1A6700CD98D1 /* diem-osx-clientTests */,
 				907AD048189D1A6700CD98D1 /* Frameworks */,
 				907AD047189D1A6700CD98D1 /* Products */,
+				2B7CC5AADEA94147B088CBD2 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +128,7 @@
 				907AD049189D1A6700CD98D1 /* Cocoa.framework */,
 				907AD068189D1A6700CD98D1 /* XCTest.framework */,
 				907AD04B189D1A6700CD98D1 /* Other Frameworks */,
+				492E54CE688D49649DD64066 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,6 +200,7 @@
 			children = (
 				90A6C71B189D1CAE00CF5229 /* App Delegate */,
 				90C49DB0189D1DC200928D9C /* Diem Controller */,
+				906BA4D6189D495D00D0E10E /* API Client */,
 				90A6C713189D1AB500CF5229 /* Watcher */,
 			);
 			path = Classes;
@@ -212,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 907AD077189D1A6700CD98D1 /* Build configuration list for PBXNativeTarget "diem-osx-client" */;
 			buildPhases = (
+				B2180D41A54C4D1083D2099C /* Check Pods Manifest.lock */,
 				907AD042189D1A6700CD98D1 /* Sources */,
 				907AD043189D1A6700CD98D1 /* Frameworks */,
 				907AD044189D1A6700CD98D1 /* Resources */,
+				85A7EDC782A847ABACDC3995 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,12 +319,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		85A7EDC782A847ABACDC3995 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2180D41A54C4D1083D2099C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		907AD042189D1A6700CD98D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				90A6C718189D1AE100CF5229 /* Watcher.m in Sources */,
+				906BA4D9189D497D00D0E10E /* APIClient.m in Sources */,
 				90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */,
 				907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */,
 				907AD056189D1A6700CD98D1 /* main.m in Sources */,
@@ -435,6 +490,7 @@
 		};
 		907AD078189D1A6700CD98D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B7CC5AADEA94147B088CBD2 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -448,6 +504,7 @@
 		};
 		907AD079189D1A6700CD98D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B7CC5AADEA94147B088CBD2 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

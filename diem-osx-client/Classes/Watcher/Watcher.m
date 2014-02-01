@@ -80,18 +80,20 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
         event.date = [NSDate date]; // TODO: look up last modified metadata on the actual file
         event.eventID = eventIds[i];
         event.flags = eventFlags[i];
+        event.kind = WatcherEventKindChange;
         
-        /*if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvent:)])
-        {
-            [self.delegate watcher:self
-                  didRegisterEvent:event];
-        }*/
-        
-        NSLog(@"%@, %llu, %du", [(__bridge NSArray *)paths objectAtIndex:i], eventIds[i], eventFlags[i]);
+        [(__bridge Watcher *)clientCallBackInfo callBackWithEvent:(WatcherEvent *)event];
     }
 }
 
-
+- (void)callBackWithEvent:(WatcherEvent *)event
+{
+    if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvent:)])
+    {
+        [self.delegate watcher:self
+              didRegisterEvent:event];
+    }
+}
 
 - (BOOL)startStream
 {
@@ -100,11 +102,17 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
 
     CFAbsoluteTime latency = 0.0; /* Latency in seconds */
     
+    FSEventStreamContext streamContext;
+    streamContext.version = 0;
+    streamContext.info = (__bridge void*)self;
+    streamContext.retain = NULL;
+    streamContext.release = NULL;
+    streamContext.copyDescription = NULL;
+    
     /* Create the stream, passing in a callback */
-    //  kFSEventStreamCreateFlagWatchRoot
     _stream = FSEventStreamCreate(NULL,
                                   &eventCallBack,
-                                  NULL,
+                                  &streamContext,
                                   pathsToWatch,
                                   kFSEventStreamEventIdSinceNow, /* Or a previous event ID */
                                   latency,
@@ -119,8 +127,6 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
         FSEventStreamRelease(_stream);
         return NO;
     }
-    
-    // Create snapshot
     
     return YES;
 }
