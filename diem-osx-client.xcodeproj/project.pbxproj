@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C7AB6532EB34167A8EF45FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E54CE688D49649DD64066 /* libPods.a */; };
+		9048A9D9189E367E005CE7FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9048A9D7189E367E005CE7FC /* Model.xcdatamodeld */; };
+		9048A9DC189E3715005CE7FC /* WatchedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9048A9DB189E3715005CE7FC /* WatchedEvent.m */; };
 		906BA4D9189D497D00D0E10E /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4D8189D497D00D0E10E /* APIClient.m */; };
 		906BA4DD189D6FF300D0E10E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4DC189D6FF300D0E10E /* NSString+MD5.m */; };
 		906BA4E3189DBAC900D0E10E /* DateInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4E2189DBAC900D0E10E /* DateInterval.m */; };
@@ -42,6 +44,9 @@
 /* Begin PBXFileReference section */
 		2B7CC5AADEA94147B088CBD2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		492E54CE688D49649DD64066 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9048A9D8189E367E005CE7FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9048A9DA189E3715005CE7FC /* WatchedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchedEvent.h; sourceTree = "<group>"; };
+		9048A9DB189E3715005CE7FC /* WatchedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchedEvent.m; sourceTree = "<group>"; };
 		906BA4D7189D497D00D0E10E /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		906BA4D8189D497D00D0E10E /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		906BA4DB189D6FF300D0E10E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -127,6 +132,16 @@
 				906BA4E2189DBAC900D0E10E /* DateInterval.m */,
 			);
 			path = "Date Interval";
+			sourceTree = "<group>";
+		};
+		906BA4E6189E2DF700D0E10E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9048A9D7189E367E005CE7FC /* Model.xcdatamodeld */,
+				9048A9DA189E3715005CE7FC /* WatchedEvent.h */,
+				9048A9DB189E3715005CE7FC /* WatchedEvent.m */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		907AD03D189D1A6700CD98D1 = {
@@ -229,6 +244,7 @@
 		90A6C71A189D1C6E00CF5229 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				906BA4E6189E2DF700D0E10E /* Data */,
 				90A6C71B189D1CAE00CF5229 /* App Delegate */,
 				90C49DB0189D1DC200928D9C /* Diem Controller */,
 				906BA4D6189D495D00D0E10E /* API Client */,
@@ -395,8 +411,10 @@
 				907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */,
 				906BA4E3189DBAC900D0E10E /* DateInterval.m in Sources */,
 				907AD056189D1A6700CD98D1 /* main.m in Sources */,
+				9048A9D9189E367E005CE7FC /* Model.xcdatamodeld in Sources */,
 				90C49DB3189D1DE100928D9C /* DiemController.m in Sources */,
 				906BA4DD189D6FF300D0E10E /* NSString+MD5.m in Sources */,
+				9048A9DC189E3715005CE7FC /* WatchedEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +647,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9048A9D7189E367E005CE7FC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9048A9D8189E367E005CE7FC /* Model.xcdatamodel */,
+			);
+			currentVersion = 9048A9D8189E367E005CE7FC /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 907AD03E189D1A6700CD98D1 /* Project object */;
 }

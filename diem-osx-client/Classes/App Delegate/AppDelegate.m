@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DiemController.h"
 #import <ServiceManagement/ServiceManagement.h>
+#import "CoreData+MagicalRecord.h"
 
 @interface AppDelegate () 
 
@@ -21,17 +22,21 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"WatchedEvents.sqlite"];
+    
     self.controller = [DiemController new];
     [self chooseDiemDirectory];
     
     [self setUpStatusItem];
     
-    SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.esben.diem-osx-client", YES);
+    SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.esben.diem-osx-client", YES);    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
     [self.controller stopTracking];
+    
+    [MagicalRecord cleanUp];
 }
 
 #pragma mark - Custom methods

@@ -3,7 +3,7 @@
 //  diem-osx-client
 //
 //  Created by Esben Sorig on 01/02/2014.
-//  Copyright (c) 2014 Esben Sorig. All rights reserved.
+//  Copyright (c) 2014 Esben Sorig. All rights reserved. 
 //
 
 #import "DiemController.h"
@@ -11,6 +11,8 @@
 #import "APIClient.h"
 #import "WatcherEvent.h"
 #import "DateInterval.h"
+#import "CoreData+MagicalRecord.h"
+#import "WatchedEvent.h"
 
 NSString* const DiemDirectoryURLKey = @"DiemDirectoryURLKey";
 NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
@@ -89,6 +91,8 @@ NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
 
 - (void)startTracking
 {
+    [self processUnsyncedEvents];
+    
     _isHistory = YES;
     
     
@@ -217,47 +221,48 @@ NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
                                               watcher:watcher];
             
             event.date = [guessInterval midpoint];
-            
-            // Update last synced date for consecutive guesses (we can reduce the search interval from our previous search)
-            //lastSynced = [guessInterval startDate];   
         }
     }
 }
 
 - (void)watcher:(Watcher *)watcher didRegisterEvents:(NSArray *)events
 {
-    // Let's sync these events with the backend before accepting more events
-    [watcher pauseStream];
-    
     [self guessHistoricalDatesOnEvents:events watcher:watcher];
     
-    NSArray *fileEvents = [events filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        WatcherEvent *event = (WatcherEvent *)evaluatedObject;
-        
-        return event.isFileEvent;
-    }]];
-    
-    if ([fileEvents count] > 0)
-    {
-        [self postEvents:fileEvents success:^{
-            NSLog(@"Occurrences posted!");
-            for (WatcherEvent *event in fileEvents) {
-                NSLog(@"%@", event);
-            }
+    // Add to unsynced queue
+    for (WatcherEvent *event in events) {
+        if (event.isFileEvent) {
+            WatchedEvent *watchedEvent = [WatchedEvent MR_createEntity];
+            watchedEvent.event = [NSKeyedArchiver archivedDataWithRootObject:event];
+            watchedEvent.synced = @NO;
             
-            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[events lastObject]]
-                                                      forKey:DiemLastEventSynced];
-            if (watcher) {
-                [watcher resumeStream];
-            }
-        }];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        }
     }
-    else {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[events lastObject]]
-                                                  forKey:DiemLastEventSynced];
-        
-        [watcher resumeStream];
+    
+    // Process queue
+    [self processUnsyncedEvents];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[events lastObject]]
+                                              forKey:DiemLastEventSynced];
+
+}
+
+- (void)processUnsyncedEvents
+{
+    NSArray *events = [WatchedEvent MR_findByAttribute:@"synced" withValue:@NO];
+    
+    NSMutableArray *unarchived = [NSMutableArray array];
+    for (WatchedEvent *unsynced in events) {
+        [unarchived addObject:[NSKeyedUnarchiver unarchiveObjectWithData:unsynced.event]];
     }
+    
+    [self postEvents:unarchived success:^{
+        for (WatchedEvent *event in events) {
+            event.synced = @YES;
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        }
+    }];
 }
 
 - (void)postEvents:(NSArray *)events success:(void(^)(void))success

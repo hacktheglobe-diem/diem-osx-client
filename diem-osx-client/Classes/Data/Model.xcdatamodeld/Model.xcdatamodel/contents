@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B3116" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="WatchedEvent" representedClassName="WatchedEvent" syncable="YES">
+        <attribute name="event" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="synced" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WatchedEvent" positionX="-3789" positionY="-1350" width="128" height="73"/>
+    </elements>
+</model>
