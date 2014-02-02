@@ -27,7 +27,8 @@
     return @{
              @"path": self.path,
              @"time": [self.class stringFromDate:self.date],
-             @"kind": (self.kind == WatcherEventKindChange ? @"change" : @"unknown")
+             @"kind": (self.kind == WatcherEventKindChange ? @"change" : @"unknown"),
+             @"eventId": @(self.eventId)
              };
 }
 

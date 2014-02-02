@@ -181,11 +181,8 @@ NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
  
  */
 
-- (void)watcher:(Watcher *)watcher didRegisterEvents:(NSArray *)events
+- (void)guessHistoricalDatesOnEvents:(NSArray *)events watcher:(Watcher *)watcher
 {
-    // Let's sync these events with the backend before accepting more
-    [watcher pauseStream];
-    
     // Determine our early reference date
     WatcherEvent *lastEventSynced = [self lastEventSynced];
     NSDate *lastSynced;
@@ -205,6 +202,7 @@ NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
         }
     }
     
+    
     for (WatcherEvent *event in events) {
         if ([event isHistoryDoneEvent]) {
             _isHistory = NO;
@@ -221,22 +219,45 @@ NSString* const DiemLastEventSynced = @"DiemLastEventSynced";
             event.date = [guessInterval midpoint];
             
             // Update last synced date for consecutive guesses (we can reduce the search interval from our previous search)
-            //lastSynced = [guessInterval startDate];
+            //lastSynced = [guessInterval startDate];   
         }
     }
+}
+
+- (void)watcher:(Watcher *)watcher didRegisterEvents:(NSArray *)events
+{
+    // Let's sync these events with the backend before accepting more events
+    [watcher pauseStream];
     
-    [self postEvents:events success:^{
-        NSLog(@"Occurrences posted!");
-        for (WatcherEvent *event in events) {
-            NSLog(@"%@", event);
-        }
+    [self guessHistoricalDatesOnEvents:events watcher:watcher];
+    
+    NSArray *fileEvents = [events filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        WatcherEvent *event = (WatcherEvent *)evaluatedObject;
         
+        return event.isFileEvent;
+    }]];
+    
+    if ([fileEvents count] > 0)
+    {
+        [self postEvents:fileEvents success:^{
+            NSLog(@"Occurrences posted!");
+            for (WatcherEvent *event in fileEvents) {
+                NSLog(@"%@", event);
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[events lastObject]]
+                                                      forKey:DiemLastEventSynced];
+            if (watcher) {
+                [watcher resumeStream];
+            }
+        }];
+    }
+    else {
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[events lastObject]]
                                                   forKey:DiemLastEventSynced];
-        if (watcher) {
-            [watcher resumeStream];
-        }
-    }];
+        
+        [watcher resumeStream];
+    }
 }
 
 - (void)postEvents:(NSArray *)events success:(void(^)(void))success
