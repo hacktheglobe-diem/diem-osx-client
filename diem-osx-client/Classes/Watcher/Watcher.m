@@ -9,6 +9,7 @@
 #import "Watcher.h"
 #import <CoreServices/CoreServices.h>
 #import "NSString+MD5.h"
+#import "WatcherEvent.h"
 
 @interface Watcher ()
 
@@ -18,14 +19,17 @@
     
     FSEventStreamRef _stream;
     
+    FSEventStreamEventId _currentEventId;
 }
 
 + (Watcher *)watcherForURL:(NSURL *)url
               withDelegate:(id<WatcherDelegate>)delegate
+          startFromEventId:(FSEventStreamEventId)eventId
 {
     NSParameterAssert(url);
     Watcher *newWatcher = [[Watcher alloc] initWithURL:url
-                                           andDelegate:delegate];
+                                              delegate:delegate
+                                      startFromEventId:eventId];
     if ([newWatcher startStream]) {
         return newWatcher;
     }
@@ -33,12 +37,14 @@
 }
 
 - (id)initWithURL:(NSURL *)URL
-      andDelegate:(id<WatcherDelegate>)delegate
+         delegate:(id<WatcherDelegate>)delegate
+ startFromEventId:(FSEventStreamEventId)eventId
 {
     if (self = [super init])
     {
         _url = URL;
         _delegate = delegate;
+        _currentEventId = eventId;
     }
     return self;
 }
@@ -56,6 +62,7 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
                    const FSEventStreamEventId eventIds[])
 {
     CFArrayRef paths = eventPaths;
+    NSArray *events = @[];
     
     for (int i = 0; i < numEvents; i++)
     {
@@ -75,29 +82,44 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
         if (flag & kFSEventStreamEventFlagRootChanged) {
             
         }
+        // Historical events done flag
+        if (flag & kFSEventStreamEventFlagHistoryDone) {
+            // We should ignore this event.
+        }
         
         WatcherEvent *event = [WatcherEvent new];
         event.path = [(__bridge NSArray *)paths objectAtIndex:i];
         event.date = [NSDate date]; // TODO: look up last modified metadata on the actual file
-        event.eventID = eventIds[i];
+        event.eventId = eventIds[i];
         event.flags = eventFlags[i];
         event.kind = WatcherEventKindChange;
         
-        [(__bridge Watcher *)clientCallBackInfo callBackWithEvent:(WatcherEvent *)event];
+        events = [events arrayByAddingObject:event];
     }
+    
+    [(__bridge Watcher *)clientCallBackInfo callBackWithEvents:events];
 }
 
-- (void)callBackWithEvent:(WatcherEvent *)event
+- (void)callBackWithEvents:(NSArray *)events
 {
     // MD5 hashing diem directory path
-    NSRange diemDirectoryPathRange = [event.path rangeOfString:[_url path]];
-    NSString *relativePath = [event.path substringFromIndex:diemDirectoryPathRange.length];
-    event.path = [NSString stringWithFormat:@"/%@%@", [[_url path] MD5String], relativePath];
+    for (WatcherEvent *event in events) {
+        NSRange diemDirectoryPathRange = [event.path rangeOfString:[_url path]];
+        NSString *relativePath = [event.path substringFromIndex:diemDirectoryPathRange.length];
+        event.path = [NSString stringWithFormat:@"/%@%@", [[_url path] MD5String], relativePath];
+    }
     
-    if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvent:)])
+    // Sort by eventId
+    events = [events sortedArrayWithOptions:0
+                            usingComparator:^NSComparisonResult(id obj1, id obj2)
+    {
+        return [(WatcherEvent *)obj1 eventId] > [(WatcherEvent *)obj2 eventId];
+    }];
+    
+    if ([self.delegate respondsToSelector:@selector(watcher:didRegisterEvents:)])
     {
         [self.delegate watcher:self
-              didRegisterEvent:event];
+             didRegisterEvents:events];
     }
 }
 
@@ -106,7 +128,7 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
     CFStringRef mypath = (__bridge CFStringRef)[_url path];
     CFArrayRef pathsToWatch = CFArrayCreate(NULL, (const void **)&mypath, 1, NULL);
 
-    CFAbsoluteTime latency = 0.0; /* Latency in seconds */
+    CFAbsoluteTime latency = 1.0; /* Latency in seconds */
     
     FSEventStreamContext streamContext;
     streamContext.version = 0;
@@ -120,7 +142,7 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
                                   &eventCallBack,
                                   &streamContext,
                                   pathsToWatch,
-                                  kFSEventStreamEventIdSinceNow, /* Or a previous event ID */
+                                  _currentEventId, /* Or a previous event ID */
                                   latency,
                                   kFSEventStreamCreateFlagWatchRoot | kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents
                                   );
@@ -135,6 +157,22 @@ static void eventCallBack(ConstFSEventStreamRef streamRef,
     }
     
     return YES;
+}
+
+- (void)pauseStream
+{
+    FSEventStreamStop(_stream);
+}
+
+- (void)resumeStream
+{
+    FSEventStreamStart(_stream);
+}
+
+- (FSEventStreamEventId)lastEventIdBeforeDate:(NSDate *)date
+{
+    dev_t device = FSEventStreamGetDeviceBeingWatched(_stream);
+    return FSEventsGetLastEventIdForDeviceBeforeTime(device, [date timeIntervalSince1970]);
 }
 
 - (void)endStream

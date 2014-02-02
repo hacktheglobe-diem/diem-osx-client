@@ -14,8 +14,8 @@
 
 - (id)initWithBaseURL:(NSURL *)URL;
 
-- (void)postOccurrence:(NSDictionary *)occurence
-               success:(void (^)(void))success
-               failure:(void(^)(NSHTTPURLResponse *response, NSError *error))failure;
+- (void)postOccurrences:(NSArray *)occurrences
+                success:(void (^)(void))success
+                failure:(void(^)(NSHTTPURLResponse *response, NSError *error))failure;
 
 @end

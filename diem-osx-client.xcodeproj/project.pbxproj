@@ -10,6 +10,8 @@
 		6C7AB6532EB34167A8EF45FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E54CE688D49649DD64066 /* libPods.a */; };
 		906BA4D9189D497D00D0E10E /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4D8189D497D00D0E10E /* APIClient.m */; };
 		906BA4DD189D6FF300D0E10E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4DC189D6FF300D0E10E /* NSString+MD5.m */; };
+		906BA4E3189DBAC900D0E10E /* DateInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 906BA4E2189DBAC900D0E10E /* DateInterval.m */; };
+		906BA4E5189DE4E300D0E10E /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906BA4E4189DE4E300D0E10E /* ServiceManagement.framework */; };
 		907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907AD049189D1A6700CD98D1 /* Cocoa.framework */; };
 		907AD054189D1A6700CD98D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 907AD052189D1A6700CD98D1 /* InfoPlist.strings */; };
 		907AD056189D1A6700CD98D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 907AD055189D1A6700CD98D1 /* main.m */; };
@@ -45,6 +47,9 @@
 		906BA4DB189D6FF300D0E10E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		906BA4DC189D6FF300D0E10E /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		906BA4DE189D702700D0E10E /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		906BA4E1189DBAC900D0E10E /* DateInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateInterval.h; sourceTree = "<group>"; };
+		906BA4E2189DBAC900D0E10E /* DateInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateInterval.m; sourceTree = "<group>"; };
+		906BA4E4189DE4E300D0E10E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		907AD046189D1A6700CD98D1 /* diem-osx-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "diem-osx-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		907AD049189D1A6700CD98D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		907AD04C189D1A6700CD98D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				906BA4E5189DE4E300D0E10E /* ServiceManagement.framework in Frameworks */,
 				90C49DB5189D221300928D9C /* CoreServices.framework in Frameworks */,
 				907AD04A189D1A6700CD98D1 /* Cocoa.framework in Frameworks */,
 				6C7AB6532EB34167A8EF45FD /* libPods.a in Frameworks */,
@@ -114,6 +120,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		906BA4E0189DBAA700D0E10E /* Date Interval */ = {
+			isa = PBXGroup;
+			children = (
+				906BA4E1189DBAC900D0E10E /* DateInterval.h */,
+				906BA4E2189DBAC900D0E10E /* DateInterval.m */,
+			);
+			path = "Date Interval";
+			sourceTree = "<group>";
+		};
 		907AD03D189D1A6700CD98D1 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +152,7 @@
 		907AD048189D1A6700CD98D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				906BA4E4189DE4E300D0E10E /* ServiceManagement.framework */,
 				906BA4DE189D702700D0E10E /* libcommonCrypto.dylib */,
 				90C49DB4189D221300928D9C /* CoreServices.framework */,
 				907AD049189D1A6700CD98D1 /* Cocoa.framework */,
@@ -216,6 +232,7 @@
 				90A6C71B189D1CAE00CF5229 /* App Delegate */,
 				90C49DB0189D1DC200928D9C /* Diem Controller */,
 				906BA4D6189D495D00D0E10E /* API Client */,
+				906BA4E0189DBAA700D0E10E /* Date Interval */,
 				90A6C713189D1AB500CF5229 /* Watcher */,
 			);
 			path = Classes;
@@ -376,6 +393,7 @@
 				906BA4D9189D497D00D0E10E /* APIClient.m in Sources */,
 				90A6C719189D1AE100CF5229 /* WatcherEvent.m in Sources */,
 				907AD05D189D1A6700CD98D1 /* AppDelegate.m in Sources */,
+				906BA4E3189DBAC900D0E10E /* DateInterval.m in Sources */,
 				907AD056189D1A6700CD98D1 /* main.m in Sources */,
 				90C49DB3189D1DE100928D9C /* DiemController.m in Sources */,
 				906BA4DD189D6FF300D0E10E /* NSString+MD5.m in Sources */,

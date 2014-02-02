@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DiemController.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 @interface AppDelegate () 
 
@@ -24,6 +25,8 @@
     [self chooseDiemDirectory];
     
     [self setUpStatusItem];
+    
+    SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.esben.diem-osx-client", YES);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification

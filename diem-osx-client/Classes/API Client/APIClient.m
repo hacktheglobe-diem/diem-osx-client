@@ -29,12 +29,12 @@
     return self;
 }
 
-- (void)postOccurrence:(NSDictionary *)occurence
-               success:(void (^)(void))success
-               failure:(void(^)(NSHTTPURLResponse *response, NSError *error))failure
+- (void)postOccurrences:(NSArray *)occurrences
+                success:(void (^)(void))success
+                failure:(void(^)(NSHTTPURLResponse *response, NSError *error))failure
 {
     [_manager POST:@"occurrences"
-        parameters:occurence
+        parameters:@{@"occurrences":occurrences}
            success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         if (success) success();
